@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+    <header th:replace="/layout/header :: header"></header>
+
+    <a th:href="@{/categories/signup}">Add Category</a>
+    <table>
+        <tr>
+            <th>STT</th>
+            <th>Category name</th>
+            <th>Image</th>
+        </tr>
+
+        <tbody>
+        <tbody>
+        <tr th:each="category, iterStat : ${list}">
+            <td th:text="${iterStat.count}"></td>
+            <td th:text="${category.categoryname}"></td>
+        </tr>
+
+
+        </tbody>
+    </table>
+
+
+    <footer th:replace="/layout/footer :: footer"></footer>
+</body>
+</html>

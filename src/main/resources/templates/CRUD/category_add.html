@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<header th:replace="/layout/header :: header"></header>
+
+<form action="#" th:action="@{/categories/add}" th:object="${category}" method="post">
+    <label for="name">Name</label>
+    <input type="text" th:field="*{categoryname}" id="name" placeholder="Name">
+    <span th:if="${#fields.hasErrors('categoryname')}" th:errors="*{categoryname}"></span>
+    <label for="email">Img</label>
+    <input type="text" th:field="*{image}" id="email" placeholder="Email">
+    <span th:if="${#fields.hasErrors('image')}" th:errors="*{image}"></span>
+    <input type="submit" value="Add Category">
+</form>
+
+<footer th:replace="/layout/footer :: footer"></footer>
+</body>
+</html>

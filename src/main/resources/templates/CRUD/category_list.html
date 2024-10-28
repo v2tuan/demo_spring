@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<header th:replace="/layout/header :: header"></header>
+
+<a th:href="@{/categories/signup}">Add Category</a>
+<table>
+    <tr>
+        <th>STT</th>
+        <th>Category name</th>
+        <th>Image</th>
+        <th>Modify</th>
+    </tr>
+
+    <tbody>
+    <tbody>
+    <tr th:each="category, iterStat : ${list}">
+        <td th:text="${iterStat.count}"></td>
+        <td th:text="${category.categoryname}"></td>
+        <td>
+            <img th:src="@{category.image}"/>
+        </td>
+        <td>
+            <a th:href="@{/categories/edit/{id}(id=${category.id})}" class="center">Edit</a>
+            <a th:href="@{/categories/delete/{id}(id=${category.id})}" class="center">Delete</a>
+        </td>
+    </tr>
+
+
+    </tbody>
+</table>
+
+
+<footer th:replace="/layout/footer :: footer"></footer>
+</body>
+</html>
+
+<style>
+    body {
+        font-family: Arial, sans-serif; /* Font chữ cho toàn bộ trang */
+        background-color: #f4f4f4; /* Màu nền trang */
+        margin: 20px; /* Khoảng cách lề trang */
+    }
+    table {
+        width: 100%; /* Chiều rộng của bảng */
+        border-collapse: collapse; /* Gộp các đường viền */
+        margin-top: 20px; /* Khoảng cách trên bảng */
+    }
+    th, td {
+        padding: 10px; /* Khoảng cách bên trong ô */
+        text-align: left; /* Căn lề trái cho văn bản */
+        border: 1px solid #dddddd; /* Đường viền ô */
+    }
+    th {
+        background-color: #4CAF50; /* Màu nền cho tiêu đề */
+        color: white; /* Màu chữ cho tiêu đề */
+    }
+    tr:nth-child(even) {
+        background-color: #f2f2f2; /* Màu nền cho hàng chẵn */
+    }
+    img {
+        width: 100px; /* Chiều rộng cố định cho ảnh */
+        height: auto; /* Chiều cao tự động giữ tỉ lệ */
+        border-radius: 5px; /* Bo góc ảnh */
+    }
+    a {
+        text-decoration: none; /* Không có gạch chân */
+        color: #4CAF50; /* Màu chữ cho liên kết */
+        margin-right: 10px; /* Khoảng cách giữa các liên kết */
+    }
+    a:hover {
+        text-decoration: underline; /* Gạch chân khi hover */
+    }
+</style>
