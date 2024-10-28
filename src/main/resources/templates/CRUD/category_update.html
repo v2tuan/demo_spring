@@ -3,7 +3,7 @@
 <body>
 <header th:replace="/layout/header :: header"></header>
 
-<form action="#" th:action="@{/categories/update}" th:object="${category}" method="post">
+<form action="#" th:action="@{/categories/update/{id}(id=${category.id})}" th:object="${category}" method="post">
     <label for="name">Name</label>
     <input type="text" th:field="*{categoryname}" id="name" placeholder="Name">
     <span th:if="${#fields.hasErrors('categoryname')}" th:errors="*{categoryname}"></span>

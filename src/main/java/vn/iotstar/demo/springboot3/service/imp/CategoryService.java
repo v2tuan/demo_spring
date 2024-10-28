@@ -3,6 +3,8 @@ package vn.iotstar.demo.springboot3.service.imp;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import vn.iotstar.demo.springboot3.entity.Category;
@@ -54,5 +56,11 @@ public class CategoryService implements ICategoryService {
                 return categoryRepository.findCategoriesByCategoryname(categoryname);
         }
 
+        public Page<Category> findByCategorynameContaining(String keyword, Pageable page) {
+                return categoryRepository.findByCategorynameContaining(keyword, page);
+        }
 
+        public Page<Category> findAll(Pageable pageable) {
+                return categoryRepository.findAll(pageable);
+        }
 }
